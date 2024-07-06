@@ -46,6 +46,12 @@ class CrudRepository {
         id: id,
       },
     });
+     if (response==0) {
+       throw new AppError(
+         "Not able to update airplane for given id",
+         StatusCodes.NOT_FOUND
+       );
+     }
     return response;
   }
 }

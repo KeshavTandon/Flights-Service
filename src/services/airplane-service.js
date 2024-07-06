@@ -66,7 +66,25 @@ async function destroyAirplane(id){
        StatusCodes.INTERNAL_SERVER_ERROR
      );
   }
-
 }
 
-module.exports = { createAirplane, getAirplanes, getAirplane ,destroyAirplane };
+async function updateAirplane(id,data)
+{
+  try {
+    const airplane=await airplaneRepository.update(id,data);
+    return airplane;
+  } catch (error) {
+    if (error.statusCode == StatusCodes.NOT_FOUND) {
+      throw new AppError(
+        "Airplane you requested to update is not present",
+        error.statusCode
+      );
+    }
+     throw new AppError(
+       "Cannot fetch data of airplane",
+       StatusCodes.INTERNAL_SERVER_ERROR
+     );
+  }
+}
+
+module.exports = { createAirplane, getAirplanes, getAirplane ,destroyAirplane ,updateAirplane };
