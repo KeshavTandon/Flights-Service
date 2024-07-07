@@ -46,9 +46,10 @@ class CrudRepository {
         id: id,
       },
     });
-     if (response==0) {
+    console.log(response);
+     if (response[0]===0) {
        throw new AppError(
-         "Not able to update airplane for given id",
+         "Not able to update for given id",
          StatusCodes.NOT_FOUND
        );
      }

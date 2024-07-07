@@ -61,4 +61,5 @@ async function updateAirplane(req,res){
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
+
 module.exports = { createAirplane ,getAirplanes ,getAirplane ,destroyAirplane ,updateAirplane};
