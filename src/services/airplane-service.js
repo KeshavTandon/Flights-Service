@@ -40,8 +40,11 @@ async function getAirplane(id) {
     const airplane = await airplaneRepository.get(id);
     return airplane;
   } catch (error) {
-    if(error.statusCode==StatusCodes.NOT_FOUND){
-      throw new AppError('Airplane you requested is not present',error.statusCode);
+    if (error.statusCode == StatusCodes.NOT_FOUND) {
+      throw new AppError(
+        "Airplane you requested is not present",
+        error.statusCode
+      );
     }
     throw new AppError(
       "Cannot fetch data of airplane",
@@ -50,28 +53,27 @@ async function getAirplane(id) {
   }
 }
 
-async function destroyAirplane(id){
+async function destroyAirplane(id) {
   try {
-    const airplane=await airplaneRepository.destroy(id);
+    const airplane = await airplaneRepository.destroy(id);
     return airplane;
   } catch (error) {
-     if (error.statusCode == StatusCodes.NOT_FOUND) {
-       throw new AppError(
-         "Airplane you requested to delete is not present",
-         error.statusCode
-       );
-     }
-     throw new AppError(
-       "Cannot fetch data of airplane",
-       StatusCodes.INTERNAL_SERVER_ERROR
-     );
+    if (error.statusCode == StatusCodes.NOT_FOUND) {
+      throw new AppError(
+        "Airplane you requested to delete is not present",
+        error.statusCode
+      );
+    }
+    throw new AppError(
+      "Cannot fetch data of airplane",
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
   }
 }
 
-async function updateAirplane(id,data)
-{
+async function updateAirplane(id, data) {
   try {
-    const airplane=await airplaneRepository.update(id,data);
+    const airplane = await airplaneRepository.update(id, data);
     return airplane;
   } catch (error) {
     if (error.statusCode == StatusCodes.NOT_FOUND) {
@@ -80,11 +82,17 @@ async function updateAirplane(id,data)
         error.statusCode
       );
     }
-     throw new AppError(
-       "Cannot fetch data of airplane",
-       StatusCodes.INTERNAL_SERVER_ERROR
-     );
+    throw new AppError(
+      "Cannot fetch data of airplane",
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
   }
 }
 
-module.exports = { createAirplane, getAirplanes, getAirplane ,destroyAirplane ,updateAirplane };
+module.exports = {
+  createAirplane,
+  getAirplanes,
+  getAirplane,
+  destroyAirplane,
+  updateAirplane,
+};
