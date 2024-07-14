@@ -35,7 +35,7 @@ module.exports = {
           Enum.SEAT_TYPE.FIRST_CLASS,
           Enum.SEAT_TYPE.PREMIUM_ECONOMY,
         ],
-        defaultValue: Enum.SEAT_TYPE.BUSINESS,
+        defaultValue: Enum.SEAT_TYPE.ECONOMY,
         allowNull: false,
       },
       createdAt: {

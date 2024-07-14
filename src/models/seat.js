@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Airplane, {
         foreignKey: "airplaneId",
       });
-    }
+    } 
   }
   Seat.init(
     {
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
           Enum.SEAT_TYPE.FIRST_CLASS,
           Enum.SEAT_TYPE.PREMIUM_ECONOMY,
         ],
-        defaultValue: Enum.SEAT_TYPE.BUSINESS,
+        defaultValue: Enum.SEAT_TYPE.ECONOMY,
         allowNull:false
       },
     },
